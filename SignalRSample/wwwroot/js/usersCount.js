@@ -1,5 +1,8 @@
 ﻿// create connection
-var connectionUserCount = new signalR.HubConnectionBuilder().withUrl("/hubs/userCount").build();
+// To change transport type add parametr to .WithUrl func example - .withUrl("/hubs/userCount", signalR.HttpTransportType.ServerSentEvents) or signalR.HttpTransportType.LongPolling, Websocket connection by default
+var connectionUserCount = new signalR.HubConnectionBuilder()
+    //.configureLogging(signalR.LogLevel.Information)
+    .withUrl("/hubs/userCount").build();
 
 //connect to methods that hub invokes aka receive notifications from hub
 connectionUserCount.on("updateTotalViews", (value) => {
@@ -14,7 +17,7 @@ connectionUserCount.on("updateTotalUsers", (value) => {
 // invoke hub metods aka send notification to hub
 
 function newWindowLoadedOnClient() {
-    connectionUserCount.send("NewWindowLoaded");
+    connectionUserCount.invoke("NewWindowLoaded", "Vitalik").then((value) => console.log(value));
 }
 
 
