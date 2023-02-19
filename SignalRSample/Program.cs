@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Hosting;
 using SignalRSample.Data;
 using SignalRSample.Hubs;
 
@@ -46,5 +47,6 @@ app.MapRazorPages();
 
 // Hubs
 app.MapHub<UserHub>("/hubs/userCount");
+app.MapHub<DeathlyHallowHub>("/hubs/deathlyhallows");
 
 app.Run();

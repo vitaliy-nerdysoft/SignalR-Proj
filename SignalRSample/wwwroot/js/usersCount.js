@@ -17,7 +17,7 @@ connectionUserCount.on("updateTotalUsers", (value) => {
 // invoke hub metods aka send notification to hub
 
 function newWindowLoadedOnClient() {
-    connectionUserCount.invoke("NewWindowLoaded", "Vitalik").then((value) => console.log(value));
+    connectionUserCount.invoke("NewWindowLoaded", "Vitalik").then((value) => console.log(value)); // Vitalik - example how to pass a parametr inside hub method
 }
 
 
