@@ -15,7 +15,15 @@ builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
     .AddEntityFrameworkStores<ApplicationDbContext>();
 builder.Services.AddControllersWithViews();
+
+/*var azureSignalRConnectionString = "Endpoint=https://signalrproj.service.signalr.net;AccessKey=PYdFPgHsb7zBLcJ3Q0U0XdZXll0Msf7OtngHnOKIUsg=;Version=1.0;";
+
+// use Azure signalR
+builder.Services.AddSignalR().AddAzureSignalR(azureSignalRConnectionString);*/
+
+// using defaul signalR
 builder.Services.AddSignalR();
+
 
 var app = builder.Build();
 
@@ -48,5 +56,9 @@ app.MapRazorPages();
 // Hubs
 app.MapHub<UserHub>("/hubs/userCount");
 app.MapHub<DeathlyHallowHub>("/hubs/deathlyhallows");
+app.MapHub<HouseGroupHub>("/hubs/houseGroup");
+app.MapHub<NotificationHub>("/hubs/notification");
+app.MapHub<ChatHub>("/hubs/chat");
+app.MapHub<OrderHub>("/hubs/order");
 
 app.Run();

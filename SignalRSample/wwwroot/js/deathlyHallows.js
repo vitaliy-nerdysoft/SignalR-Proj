@@ -21,12 +21,12 @@ connectionDeathlyHallows.on("updateDeathlyHallowCount", (cloak, stone, wand) => 
 // start connection
 function fulfilled() {
     // do some on start
-    console.log("connection to User hub successful");
+    console.log("connection to DeathlyHullow hub successful");
 }
 
 function rejected() {
     // rejected logs
-    console.log("connection to User hub rejected");
+    console.log("connection to DeathlyHullow hub rejected");
 }
 
 connectionDeathlyHallows.start().then(fulfilled, rejected);

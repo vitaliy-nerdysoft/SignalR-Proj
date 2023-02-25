@@ -1,0 +1,10 @@
+name: Build
+on: [push]
+jobs:
+  Build-workflow:
+    runs-on: windows-latest
+    steps:
+      - name: Build
+        run: dotnet build -c Release
+      - name: Tests
+        run: dotnet test --no-build -c Release
