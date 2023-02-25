@@ -5,6 +5,6 @@ jobs:
     runs-on: windows-latest
     steps:
       - name: Build
-        run: dotnet build -c Release
+        run: dotnet build "SignalRSample.sln" -c Release
       - name: Tests
         run: dotnet test --no-build -c Release
