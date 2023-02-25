@@ -4,7 +4,12 @@ jobs:
   Build-workflow:
     runs-on: windows-latest
     steps:
+      - uses: actions/checkout@v3
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v3
+        with:
+        dotnet-version: 6.0.x
       - name: Build
-        run: dotnet build "SignalRSample.sln" -c Release
+        run: dotnet build -c Release
       - name: Tests
         run: dotnet test --no-build -c Release
